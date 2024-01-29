@@ -1,0 +1,30 @@
+{% extends 'home.html' %}{%load i18n%}
+
+{%block tit%}الدروس{%endblock%}
+
+{%block cont1%}
+<div class="topic_title">
+<h1>{{course.c_name}}</h1></div>{%endblock%}
+{%block fullbody%}
+<div class="cont_model">
+  {% if ch_list %}
+    <div>
+    {% for i in ch_list %}
+    
+    
+    <div style="display: flex;">
+      <h3>{{i.title}}</h3>
+      <a href="{% url 'subj_v'  i.pk course.pk %}" class="btn1">درس</a>
+      
+    </div>
+      
+    {% endfor %}
+  </div>
+  {% else %}
+    <h1>لاتوجد فصول لهذه الماده</h1>
+  {% endif %}
+  
+  
+</div>
+
+{%endblock%}

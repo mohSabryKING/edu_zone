@@ -1,0 +1,37 @@
+{% extends 'home.html' %}{%load i18n%}
+
+{%block tit%}الدروس{%endblock%}
+
+{%block cont1%}
+<div class="topic_title">
+<h1>{{course.c_name}}</h1></div>{%endblock%}
+{%block fullbody%}
+<div class="cont_model_1" >
+
+    
+ 
+      <a href="" class="btn1">{{ch.title}}</a>
+     <div>
+       <video controls crossorigin playsinline height="1025px" width="768px">
+           <source src="{{ch.video.url}}" type="video/mp4" size="576">
+             <!-- Fallback for browsers that don't support the <video> element -->
+        </video>
+        <p><span>
+          {{ch.bio}}
+        </span></p>
+        <div>
+          <h1>exam_area</h1>
+        </div>
+     </div>
+       
+
+        
+    
+      <!-- Plyr resources and browser polyfills are specified in the pen settings -->
+ 
+    
+ 
+  
+</div>
+
+{%endblock%}

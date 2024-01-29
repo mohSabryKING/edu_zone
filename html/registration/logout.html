@@ -1,0 +1,14 @@
+{% extends 'home.html' %}{%load i18n%}
+
+{%block tit%}{%trans 'logged out'%}{%endblock%}
+
+{%block cont1%}
+<div style="height: 30vh;display: grid;place-items: center;">
+<h1>{%trans 'logged out'%}</h1></div>{%endblock%}
+{%block fullbody%}
+<form action="" method="post" class="cont_model form_model">
+ <h1>تم تسجيل الخروج بنجاح</h1>
+ <a href="{% url 'home' %}" class="btn1">رجوع الي القائمه الرئيسيه</a>
+</form>
+
+{%endblock%}

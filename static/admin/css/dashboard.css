@@ -1,0 +1,33 @@
+/* DASHBOARD */
+.dashboard td, .dashboard th {
+    word-break: break-word;
+    
+    background: rgba(153, 205, 50, 0.116);
+}
+
+.dashboard .module table th {
+    width: 100%;
+}
+
+.dashboard .module table td {
+    white-space: nowrap;
+    background: rgba(153, 205, 50, 0.185);
+}
+
+.dashboard .module table td a {
+    background: yellowgreen;
+    display: block;
+    padding-right: .6em;
+}
+
+/* RECENT ACTIONS MODULE */
+
+.module ul.actionlist {
+    margin-left: 0;
+}
+
+ul.actionlist li {
+    list-style-type: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

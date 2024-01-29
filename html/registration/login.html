@@ -1,0 +1,21 @@
+{% extends 'home.html' %}{%load i18n%}
+
+{%block tit%}نسجيل دخول{%endblock%}
+
+{%block cont1%}
+<div style="height: 30vh;display: grid;place-items: center;">
+<h1>تسجيل دخول</h1></div>{%endblock%}
+{%block fullbody%}
+<div class="cont_model">
+  <form action="" method="post" class="form_model">
+    <input type="hidden" name="next">
+    {% csrf_token %}
+  {{form.as_p}}  
+  <input type="submit" class="btn1 submit" value="تسجيل دخول">
+  <a href="{% url 'reg' %}" class="btn1 submit">إدخال مستخدم جديد</a>
+  
+</form>
+</div>
+
+
+{%endblock%}

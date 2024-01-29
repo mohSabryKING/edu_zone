@@ -1,0 +1,15 @@
+
+{% extends 'home.html' %}{%load i18n%}
+{%block tit%}{%trans 'your position'%}{%endblock%}
+
+{%block cont1%}
+<div class="topic_title">
+<h1>حدد  وظيفنك</h1></div>{%endblock%}
+{%block fullbody%}
+<div class="cont_model">
+  <a href="{% url 'form_stu_profile' %}" class="btn1 submit">طالب</a>
+  <a href="{% url 'form_master_profile'%}" class="btn1 submit">أستاذ</a>
+  <a href="{% url 'home' %}" class="btn1 submit">رجوع</a>
+</div>
+
+{%endblock%}

@@ -1,0 +1,4 @@
+{%block tit%}{%endblock%}
+
+{%block cont_1%}{%endblock%}
+{%block fullbody%}{%endblock%}

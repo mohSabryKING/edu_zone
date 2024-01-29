@@ -1,0 +1,236 @@
+{%load static i18n%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="{% static 'css/m2.css' %}">
+      <link rel="stylesheet" href="{% static 'css/video-js.css' %}">
+      <link rel="stylesheet" href="{% static 'css/video-js.min.css' %}">
+      <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+   
+      <title>{% block tit %}{%trans 'title'%}{% endblock tit %}</title>
+</head>
+<header>
+      <div class="h50" id="head_a">
+            <div id="top_left">
+                  <div>
+                        <img src="{% static 'img/logo.png' %}" height="50px" width="50px" alt="">
+                        <h1> Edu Model</h1>
+                  </div>
+            </div>
+            <div id="top_right">
+                  <ul id="menu_tabs" type="none">
+                        {% if user.is_authenticated %}
+                              
+                              {% if user.is_staff %}
+                              <a href="{% url 'view_master_profile' user.pk %}" class="list_btn">{{user.username}}</a>
+                              {% else %}
+                              <a href="{% url 'view_stu_profile' user.pk %}" class="list_btn">{{user.username}}</a>
+                              {% endif %}
+                         {% else %}
+                         <a href="{% url 'login' %}" class="list_btn">تسجيل دخول</a>
+                        
+                         {% endif %}
+                         {% if user.is_staff %}
+                              <a href="{% url 'add_exam' user.pk%}" class="list_btn">إدخال امتحان</a>
+                         {% else %}
+                         <a href="solve_exam" class="list_btn">حل أمنحان</a>
+ 
+                         {% endif %}
+                         
+                         
+                         
+                         <form method="post" action="{% url 'logout' %}">
+                              {% csrf_token %}
+                              <button style="background-color: rgb(170, 255, 0);color: #000;border: 0px;" type="submit">{% translate "Log out" %}</button>
+                            </form>
+                        <a href="" class="list_btn">المراجعات</a>
+                              <a href="" class="list_btn">النواصل</a>
+                  </ul>
+                  <details style="position: fixed;right: 6px;">
+                        <summary id="menu_btn">
+                             <img  src="{% static 'img/hamburg.svg' %}" style="display: block;position: relative;top: 10px;" height="32px" width="32px" alt=""> 
+                        </summary>
+                        <ul id="mobile_menu_tabs" style="display: block;" type="none">
+                              {% if user.is_authenticated %}
+                              
+                              {% if user.is_staff %}
+                              <li>
+                                  <a href="{% url 'view_master_profile' user.pk %}" class="list_btn">{{user.username}} صفحه</a>
+                                
+                              </li>
+                              {% else %}
+                              <li><a href="{% url 'view_stu_profile' user.pk %}" class="list_btn">{{user.username}} صفحه</a>
+                              </li>
+                              {% endif %}
+                         {% else %}
+                         <li>
+                              <a href="{% url 'login' %}" class="list_btn">تسجيل دخول</a>
+                         </li>
+                         
+                        
+                         {% endif %}
+                         {% if user.is_staff %}
+                         <li>
+                              <a href="{% url 'add_exam' user.pk%}" class="list_btn">إدخال امتحان</a>
+                         </li>
+                              
+                         {% else %}
+                         <li><a href="solve_exam" class="list_btn">حل أمنحان</a></li>
+                         
+ 
+                         {% endif %}
+                         
+                         
+                         
+                         <li><a href="" class="list_btn">الدفع</a></li>
+                         <li><a href="" class="list_btn">المراجعات</a></li>
+                         <li><a href="" class="list_btn">النواصل</a></li>
+                  </ul>
+                  </details>
+                   
+            </div>
+      </div>
+      {% block cont1 %}
+      <div class="h50" id="body_a">
+            <div id="cont_a1">
+                  <div>
+                        <h1>{%trans 'Intro model1'%}</h1>
+                        <h2>{%trans 'Intro model2'%}</h2>
+                        <p>
+                              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio magni quaerat, eius, harum, voluptatem nostrum exercitationem aspernatur consectetur quibusdam non alias cum eveniet tempore delectus officiis sint fugiat laborum unde?
+                        </p>
+                        <a href="" class="btn1">{%trans 'view model'%}</a>
+                        <a href="" class="btn2">{%trans 'view model'%}</a>
+                  </div>
+            </div>
+            <div id="cont_a2">
+                  <img src="{% static 'img/stu6.png' %}" width="512px" height="512px" alt="">
+            </div>
+      </div>    
+      {% endblock %}
+      
+</header>
+
+      
+
+<body>
+      {% block fullbody %}
+      <div class="h50" id="div_1">
+            <div id="x1">
+                  <h1>ترقبوا جميع المواد</h1>
+            </div>
+            <div id="x2">{% if subj_cont %}
+                  <ul>
+                        {% for i in subj_cont %}
+                              <a href="{% url 'ch_subj' i.pk %}" class="btn1">{{i.c_name}}</a>
+                        {% endfor %}
+                  </ul>
+            {% else %}
+                  <h1>no subjects</h1>
+            {% endif %}
+                  
+                  <a href="{% url 'sub_j' %}" class="display_more">display more</a>
+            </div>
+      </div>
+      <div class="h50" id="div_2">
+            
+            <div id="x3">
+                  <img src="{% static 'img/stu6.jpg' %}" alt="">
+            </div>
+
+      <div id="x4">
+                  <h1>{%trans 'شروحات للدروس بالفيديو'%}</h1>
+            <h2>{%trans ' بعد الدفع مباشره'%}</h2>
+            <p>
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio magni quaerat, eius, harum, voluptatem nostrum exercitationem aspernatur consectetur quibusdam non alias cum eveniet tempore delectus officiis sint fugiat laborum unde?
+            </p>
+            <a href="{% url 'sub_j' %}" class="btn1">الدفع الأن</a>
+      
+      </div>
+      </div>
+      <div id="div_3">
+            <div id="area_2">
+                  <div id="sec_3"><strong>{{subj}}</strong> <h3>ماده</h3></div>
+                  <div id="sec_4"><strong>{{master}}</strong> <h3>مدرس و أستاذ</h3></div>
+                  <div id="sec_5"><strong>{{subj_ch}}</strong><h3>درس لكل ماده</h3> </div>
+                  <div id="sec_6"><strong>{{exams}}</strong> <h3>امتحان</h3></div>
+            </div>
+            <div id="area_1">
+                  <div id="sec1">
+                        <h1>كبار الساده الأساتذه</h1>
+                  </div>
+                  <div id="sec2">
+                        {% if master %}
+                              {% for i in master_c %}
+                              <a href="{% url 'view_master_profile' i.pk %}" class="btn1">{{i.name}}</a>
+                        {% endfor %}
+                        {% else %}
+                              <h2>no teachers</h2>
+                        {% endif %}
+                        
+                  </div>
+                  
+                        <a href="{% url 'masters' %}" class="btn1">عرض المزيد</a>
+               
+                  
+            </div>
+            
+      </div>
+      {% endblock %}
+      <script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
+
+     
+      <script type="text/javascript">
+             $(document).ready(function(){
+    $('ul.tabs').tabs();
+  });
+            // Change the second argument to your options:
+  // https://github.com/sampotts/plyr/#options
+  const player = new Plyr('video', {captions: {active: true}});
+  
+  // Expose player so it can be used from the console
+  window.player = player;
+
+
+  let tabs_x=document.querySelectorAll("#m_sec_1>ul li");
+let arr_items=Array.from(tabs_x);
+let cont_x=document.querySelectorAll("#m_sec_2>div");
+let arr_cont=Array.from(cont_x);
+console.log(arr_items);
+arr_items.forEach(
+      (e)=>{
+
+            e.addEventListener("click",function (e1) {
+                  arr_items.forEach((e)=>{
+e.classList.remove("active");
+console.log(e);
+                  });
+                  
+            })
+      }
+
+)
+
+
+
+
+
+          </script>
+           
+</body>
+
+<footer>
+      <h1>Summery</h1>
+      <div id="div_4">
+            <div id="f1">jjj</div>
+            <div id="f2">jjj</div>
+            <div id="f3">jjj</div>
+      </div>
+      <div class="h50" id="div_5">
+            <h1><a href="" class="list_btn">fff</a></h1>
+            <h1><a href="" class="list_btn">fff</a></h1>
+      </div>
+</footer>
+</html>

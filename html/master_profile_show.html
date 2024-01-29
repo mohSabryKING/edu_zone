@@ -1,0 +1,40 @@
+{% extends 'home.html' %}{%load i18n%}
+
+{%block tit%}{%trans 'your position'%}{%endblock%}
+
+{%block cont1%}
+<div class="bkg_model" style="background-image: url({{master.m_img_2.url}});">
+  <div class="stack_cont">
+    <img src="{{master.m_img_1.url}}" width="128px" height="128px" alt="">
+    <h1>{{master.name}}</h1>
+    <span>{{user.username}}:{{master.added_in}}</span>
+  </div>
+</div>
+{%endblock%}
+{%block fullbody%}
+<div class="profile">
+  <div id="m_sec_1">
+    <ul>
+      <li><a class='btn1 active' href="edumanage/">الإداره</a></li>
+      <li><a class='btn1' href="{% url 'add_exam' user.pk%}">إدخال إمتحان</a></li>
+      <li><a class='btn1'>إدخال ملخص</a></li>
+      <li><a class='btn1' href="{% url 'logout' %}">إضافه محتوي دراسي</a></li>
+      <li><a class='btn1' href="{% url 'logout' %}">أدخال نموذج للشهاده</a></li>
+      <li><a class='btn1'>رجوع</a></li>
+    </ul>
+  </div>
+  <div id="m_sec_2">
+    {% if  master_exams %}
+      {% for i in master_exams %}
+      <a download="">
+       
+      </a>
+      {% endfor %}
+    {% else %}
+      <h1>لم يتم أضافه اي أمتحانات جديده</h1>
+    {% endif %}
+   
+  </div>
+</div>
+
+{%endblock%}

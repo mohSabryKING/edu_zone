@@ -1,0 +1,28 @@
+{% extends 'home.html' %}{%load i18n%}
+
+{%block tit%}{%trans 'your position'%}{%endblock%}
+
+{%block cont1%}
+<div class="bkg_model" style="background-image: url({{stu.stu_img_2.url}});">
+  <div class="stack_cont">
+    <img src="{{stu.stu_img_1.url}}" width="128px" height="128px" alt="">
+    <h1>{{stu.name}}</h1>
+    <span>{{user.username}}:{{stu.added_in}}</span>
+  </div>
+</div>
+{%endblock%}
+{%block fullbody%}
+<div class="profile">
+  <div id="stu_sec_1">
+    <ul>
+      <li><a class='btn1' href="">عرض الشهادات</a></li>
+      <li><a class='btn1'>عرض كل الملخصات</a></li>
+      <li><a class='btn1'>كل الكورسات</a></li>
+      <li><a class='btn1'>تحميل الأمتحانات</a></li>
+      <li><a class='btn1'>رجوع</a></li>
+    </ul>
+  </div>
+  <div id="stu_sec_2"></div>
+</div>
+
+{%endblock%}
